@@ -1,0 +1,32 @@
+.row--extend{
+  margin-left: 0;
+}
+
+.post_views{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.before_img{
+  width: 25%;
+}
+
+.after_img{
+  width: 75%;
+}
+
+
+.tags{
+  display: flex;
+  margin-right: 30px;
+}
+
+.tag{
+  width: 50px;
+  vertical-align: top;
+}
+
+.card--extend{
+  min-width: 576px;
+}

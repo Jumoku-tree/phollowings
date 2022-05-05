@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
+.header{
+  height: 120px;
+  background-color: antiquewhite;
+}
+
+.index_body{
+  display: flex;
+}
+
+.sidebar{
+  width: 200px;
+  height: calc(100vh - 120px);
+  background-color: aliceblue; /* 大きさ確認用 */
+}
+
+.main_view{
+  width: calc(100vw - 200px);
+  height: calc(100vh - 120px);
+  background-color: aquamarine; /* 大きさ確認用 */
+  overflow: scroll;
+  padding: 20px 10px;
+}
