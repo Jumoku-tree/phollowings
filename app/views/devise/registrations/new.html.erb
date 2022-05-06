@@ -1,8 +1,6 @@
+<div class="work_wrapper text-center">
 
-
-<body class="text-center">
-
-  <main class="form-signin">
+  <div class="new_works_field form-signin align-items-center">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -31,9 +29,8 @@
         <%= f.label :profile, "プロフィール", for: "floatingProfileText" %>
       </div>
 
-      <%= f.submit "アカウントを作成", class: "w-100 btn btn-lg btn-primary" %>
+      <%= f.submit "アカウントを作成", class: "w-100 btn btn-secondary" %>
     <% end %>
 
-    <%= render "devise/shared/links" %>
-  </main>
-</body>
+  </div>
+</div>

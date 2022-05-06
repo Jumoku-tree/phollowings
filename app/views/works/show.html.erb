@@ -1,0 +1,31 @@
+<div class="work_wrapper">
+  <div class="container works_field">
+    <div class="col">
+      <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"> %>
+      <div class="work_views">
+        <%= image_tag @work.images[0] %>
+        <%= image_tag @work.images[1] %>
+      </div>
+      <%# </svg> %>
+      <div class="card_wrapper">
+        <div class="card-body card--extend">
+          <h5 class="fw-bold"><%= @work.title %></h5>
+          <p class="card-text"><%= @work.caption %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted mb-3">#tags</small>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">2022/5/12</small>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+        </div>
+      </div>
+      <div class="card_wrapper">
+          <p class="text-center">この人の作品一覧を見る</p>
+      </div>
+    </div>
+  </div>
+</div>

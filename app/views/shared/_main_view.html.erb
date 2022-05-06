@@ -1,25 +1,25 @@
 <div class="main_view">
  
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <% @posts.each do |post| %>
-      <div class="col card--extend">
+    <% @works.each do |work| %>
+      <div class="col">
         <div class="card shadow-sm">
 
           <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/> %>
-            <div class="post_views">
+            <div class="work_views">
               <div class="before_img">
-              <%= image_tag post.images[0], class:"img-thumbnail" %>
+              <%= image_tag work.images[0], class:"img-thumbnail" %>
               </div>
               <div class="after_img">
-              <%= image_tag post.images[1], class:"img-thumbnail" %>
+              <%= image_tag work.images[1], class:"img-thumbnail" %>
               </div>
             </div>
           <%# </svg> %>
 
           <div class="card-body">
-            <h5><%= post.title %></h5>
+            <h5><%= work.title %></h5>
             <p class="card-text">
-              カテゴリ：<%= post.category.name %>
+              カテゴリ：<%= work.category.name %>
             </p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="tags">
