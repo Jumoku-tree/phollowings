@@ -1,4 +1,7 @@
 class WorksController < ApplicationController
+  require 'rubygems'
+  require 'RMagick'
+  
   def index
     @works = Work.all
   end
@@ -18,10 +21,13 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @image_prev = Magick::Image.read(@work.images[0]).first
+    @image_next = Magick::Image.read(@work.images[1]).first
+
   end
 
   private
   def work_params
-    params.require(:work).permit(:title, :caption, :category_id, { images: [] })
+    params.require(:work).permit(:title, :caption, :category_id, { images: [] }).merge(user_id: current_user.id)
   end
 end

@@ -16,16 +16,6 @@
   width: 75%;
 }
 
-.tags{
-  display: flex;
-  margin-right: 30px;
-}
-
-.tag{
-  width: 50px;
-  vertical-align: top;
-}
-
 .works_field{
   display: flex;
   justify-content: space-between;
