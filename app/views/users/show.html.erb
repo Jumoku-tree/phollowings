@@ -1,0 +1,5 @@
+<div class="container d-flex justify-content-around mt-5">
+  <% @works.each do |work| %>
+    <%= render partial: 'shared/main_view', locals: { work: work } %>
+  <% end %>
+</div>

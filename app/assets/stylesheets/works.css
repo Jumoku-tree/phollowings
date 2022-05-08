@@ -5,15 +5,16 @@
 .work_views{
   width: 100%;
   display: flex;
-  justify-content: space-around;
 }
 
 .before_img{
-  width: 25%;
+  width: 50%;
+  max-width: 270px;
 }
 
 .after_img{
-  width: 75%;
+  width: 50%;
+  max-width: 270px;
 }
 
 .works_field{
