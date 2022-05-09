@@ -7,4 +7,5 @@ class Work < ApplicationRecord
   belongs_to :user
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  has_many :tools, through: :work_tools
 end

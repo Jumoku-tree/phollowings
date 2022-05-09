@@ -5,7 +5,7 @@
   <div class="sidebar">
     <%= render partial: 'shared/sidebar'%>
   </div>
-  <div class="container d-flex justify-content-around mt-5">
+  <div class="container d-flex justify-content-start mt-5">
     <% @works.each do |work| %>
       <%= render partial: 'shared/main_view', locals: { work: work } %>
     <% end %>

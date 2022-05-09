@@ -14,11 +14,18 @@
         <div class="card-body card--extend">
           <h5 class="fw-bold"><%= @work.title %></h5>
           <p class="card-text"><%= @work.caption %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted mb-3">#tags</small>
-          </div>
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted">2022/5/12</small>
+          <div>
+            <div class="d-flex">
+              <small class="text-muted mb-3">#tags</small>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <small class="text-muted">2022/5/12</small>
+              </div>
+              <div class="ms-4">
+                <small class="text-muted">使用ツール: </small>
+              </div>
+            </div>
           </div>
         </div>
         <div class="btn-group">

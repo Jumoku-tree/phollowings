@@ -12,12 +12,13 @@
 - has_many: posts
 - has_many: comments
 
-### postsテーブル
+### worksテーブル
 | column        | type       | options                        |
 | ------------- | ---------- | ------------------------------ |
 | title         | string     | null: false                    |
 | caption       | text       | null: false                    |
 | category_id   | integer    | null: false                    |
+| tool_id       | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
 #### Association
@@ -25,6 +26,7 @@
 - belongs_to :user
 - belongs_to :category
 - has_many_attached: images
+- has_many: tools, through :work_tools
 
 ### commentsテーブル
 | column      | type       | options                        |
