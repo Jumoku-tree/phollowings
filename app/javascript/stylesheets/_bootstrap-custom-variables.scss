@@ -46,6 +46,10 @@ $yellow:  #ffc107 !default;
 $green:   #198754 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
+$base-bg: #b8e6e3;
+$main-c:  #3c8aeb;
+$accent:  #e89a3c;
+$base-d:  #aac8be;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -380,6 +384,7 @@ $spacers: (
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
+  6: $spacer * 6 //追加分（作品一覧のmargin-bottom）
 ) !default;
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
@@ -401,7 +406,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
+$body-bg:                   $base-bg !default;
 $body-color:                $gray-900 !default;
 $body-text-align:           null !default;
 
@@ -524,7 +529,7 @@ $border-widths: (
   5: 5px
 ) !default;
 
-$border-color:                $gray-300 !default;
+$border-color:                $gray-500 !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
@@ -850,7 +855,7 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg !default;
 $input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
-$input-bg:                              $body-bg !default;
+$input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
 $input-disabled-border-color:           null !default;
 
@@ -1507,7 +1512,7 @@ $list-group-action-active-bg:       $gray-200 !default;
 
 // scss-docs-start thumbnail-variables
 $thumbnail-padding:                 .25rem !default;
-$thumbnail-bg:                      $body-bg !default;
+$thumbnail-bg:                      $white !default;
 $thumbnail-border-width:            $border-width !default;
 $thumbnail-border-color:            $gray-300 !default;
 $thumbnail-border-radius:           $border-radius !default;

@@ -1,5 +1,4 @@
 class Tool < ActiveHash::Base
-  include ActiveHash::Associations
   self.data = [
     { id: 1, name: '-使用ツール選択-' },
     { id: 2, name: 'Photoshop' },
@@ -20,5 +19,6 @@ class Tool < ActiveHash::Base
     { id: 99, name: 'フリーソフト・その他ツール' }
   ]
 
-  has_many :works, through: :work_tools
+  include ActiveHash::Associations
+  has_many :works
 end

@@ -1,17 +1,16 @@
 <header class="d-flex flex-wrap justify-content-center py-3">
   <%= render partial: 'shared/header' %>
 </header>
-<div class="work_wrapper">
-  <div class="container works_field">
-    <div class="col">
+  <div class="container-md mt-5 pb-1 bg-white">
+    <div class="d-flex pt-5">
       <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"> %>
-      <div class="work_views">
-        <%= image_tag @work.images[0] %>
-        <%= image_tag @work.images[1] %>
+      <div class="d-flex w-75">
+        <%= image_tag @work.images[0], class: "image-fluid w-50" %>
+        <%= image_tag @work.images[1], class: "image-fluid w-50 ms-2" %>
       </div>
       <%# </svg> %>
       <div class="card_wrapper">
-        <div class="card-body card--extend">
+        <div class="card-body ms-4 justify-content-center">
           <h5 class="fw-bold"><%= @work.title %></h5>
           <p class="card-text"><%= @work.caption %></p>
           <div>
@@ -23,19 +22,22 @@
                 <small class="text-muted">2022/5/12</small>
               </div>
               <div class="ms-4">
-                <small class="text-muted">使用ツール: </small>
+                <small class="text-muted">使用ツール: 
+                <%= @work.tool.name %>
+                </small>
               </div>
             </div>
           </div>
+          <div class="d-flex justify-content-center mt-5">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </div>
+          </div>
         </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-        </div>
-      </div>
-      <div class="card_wrapper">
-          <p class="text-center">この人の作品一覧を見る</p>
       </div>
     </div>
+    <div class="card_wrapper">
+      <p class="text-center">この人の作品一覧を見る</p>
+    </div>
   </div>
-</div>

@@ -1,8 +1,11 @@
 html,
 body {
-  background-color: #aac8be;
   height: 100%;
   box-sizing: border-box;
+}
+
+header{
+  background-color: white;
 }
 
 .header{
@@ -14,6 +17,7 @@ body {
 }
 
 .sidebar{
+  padding-left: 40px;
   width: 250px;
   height: calc(100vh - 120px);
 }

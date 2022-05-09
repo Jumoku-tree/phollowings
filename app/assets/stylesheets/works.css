@@ -3,8 +3,10 @@
 }
 
 .work_views{
+  margin-top: 10px;
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .before_img{
@@ -30,9 +32,4 @@
   width: 60%;
   margin: 40px auto;
   align-items: center;
-}
-
-.card--extend{
-  margin-right: 50px;
-  border-right: 1px solid #aac8be;
 }

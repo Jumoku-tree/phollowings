@@ -1,11 +1,18 @@
 class Work < ApplicationRecord
   with_options presence: true do
-    validates :title
+    validates :title, length: { maximum: 40 }
     validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :tool_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :tool_id2
+    validates :tool_id3
+    validates :images
   end
+  validates :caption, length:{ maximum: 2000 }
+
   has_many_attached :images
   belongs_to :user
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  has_many :tools, through: :work_tools
+  belongs_to :tool
 end
