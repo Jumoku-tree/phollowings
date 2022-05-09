@@ -183,6 +183,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rmagick (4.2.5)
     romaji (0.2.4)
       rake (>= 0.8.0)
     rspec-core (3.11.0)
@@ -295,6 +296,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 6.0.0)
+  rmagick
   rspec-rails (~> 4.0.0)
   rubocop
   sass-rails (~> 5)

@@ -1,40 +1,36 @@
-<div class="main_view">
- 
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <% @posts.each do |post| %>
-      <div class="col card--extend">
+   <div class="row row-cols-1 pe-5" style="max-width: 540px;">
+      <div class="col">
         <div class="card shadow-sm">
 
           <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/> %>
-            <div class="post_views">
+            <div class="work_views">
               <div class="before_img">
-              <%= image_tag post.images[0], class:"img-thumbnail" %>
+              <%= image_tag work.images[0], class:"img-thumbnail" %>
               </div>
               <div class="after_img">
-              <%= image_tag post.images[1], class:"img-thumbnail" %>
+              <%= image_tag work.images[1], class:"img-thumbnail" %>
               </div>
             </div>
           <%# </svg> %>
 
           <div class="card-body">
-            <h5><%= post.title %></h5>
-            <p class="card-text">
-              カテゴリ：<%= post.category.name %>
-            </p>
+            <div class="d-flex justify-content-between mb-2">
+            <span class="fs-5"><%= work.title %></span>
+            <span class="card-text"><%= work.user.name %></span>
+            </div>
+            <span class="card-text">
+              カテゴリ：<%= work.category.name %>
+            </span>
             <div class="d-flex justify-content-between align-items-center">
-              <div class="tags">
-              <small class="text-muted tag">タグ:</small>
-              <small class="text-muted">タグ１,タグ２,タグ3,タグ４,タグ5,タグ6</small>
+              <div class="d-flex mt-1 me-5">
+                <small class="text-muted">タグ１,タグ２,タグ3,タグ４,タグ5,タグ6,タグ7</small>
               </div>
-              <div class="btn-group">
+              <%= link_to work_path(work.id) do %>
                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
   </div>
 
-</div>

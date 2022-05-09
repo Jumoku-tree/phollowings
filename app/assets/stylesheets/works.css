@@ -1,0 +1,38 @@
+.row--extend{
+  margin-left: 0;
+}
+
+.work_views{
+  width: 100%;
+  display: flex;
+}
+
+.before_img{
+  width: 50%;
+  max-width: 270px;
+}
+
+.after_img{
+  width: 50%;
+  max-width: 270px;
+}
+
+.works_field{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 40px 0;
+}
+
+.card_wrapper{
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 40px auto;
+  align-items: center;
+}
+
+.card--extend{
+  margin-right: 50px;
+  border-right: 1px solid #aac8be;
+}

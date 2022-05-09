@@ -1,0 +1,52 @@
+.work_wrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.new_works_field{
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  width: 740px;
+  min-height: 100%;
+  padding: 40px 0;
+}
+
+.img_previews{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+img{
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.preview_img{
+  display: flex;
+  width: 300px;
+  height: 300px;
+  background-color: lightslategray;
+  margin-right: 10px;
+}
+
+.desc_forms{
+  width: 100%;
+}
+
+.other_imgs{
+  display: flex;
+}
+
+.other_img{
+  margin-right: 10px;
+}
+
+.img_delete_btn{
+  width: 50px;
+  border: 1px solid lightblue;
+}

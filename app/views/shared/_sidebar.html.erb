@@ -1,1 +1,37 @@
-    <%= link_to '投稿', new_post_path %>
+<div class="container pt-5 pb-5 d-flex flex-column h-100 justify-content-between">
+	<ul class="nav nav-pills flex-column flex-shrink-0 mb-auto">
+		<div>
+			<% if !user_signed_in? %>
+				<li class="nav-item">
+					<%= link_to "ログイン", new_user_session_path, class:"nav-link link-dark" %>
+				</li>
+				<li>
+					<%= link_to "新規登録", new_user_registration_path, class:"nav-link link-dark" %>
+				</li>
+			<% else %>
+				<li>
+					<%= link_to "投稿", new_work_path, class: "nav-link link-dark" %>
+				</li>
+				<li>
+					<%= link_to " マイページ", user_path(current_user.id), class:"nav-link link-dark" %>
+				</li>
+				<li>
+					<a href="#" class="nav-link link-dark">
+						お気に入り
+					</a>
+				</li>
+			<% end %>
+		</div>
+
+	</ul>
+	<div class="dropdown border-top">
+		<% if user_signed_in? %>
+			<%= link_to "#{current_user.name} さん", "#", class:"nav-link link-dark" %>
+			<ul class="nav nav-pills flex-column fw-normal pb-1 small">
+				<li><a href="#" class="nav-link link-dark pb-0">設定</a></li>
+				<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link link-dark pb-0" %></li>
+			</ul>
+		<% end %>
+	</div>
+
+</div>
