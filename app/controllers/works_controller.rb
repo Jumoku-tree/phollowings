@@ -3,7 +3,7 @@ class WorksController < ApplicationController
   include Magick
 
   def index
-    @works = Work.all
+    @works = Work.includes(:user).order("created_at DESC")
     @works.each do |work|
       images = work.images
       images.each do |image|
@@ -21,7 +21,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to root_path
     else
-      render :edit
+      render :new
     end
   end
 
@@ -31,7 +31,10 @@ class WorksController < ApplicationController
 
   private
   def work_params
-    params.require(:work).permit(:title, :caption, :category_id, { images: [] }).merge(user_id: current_user.id)
+    params
+    .require(:work)
+    .permit(:title, :caption, :category_id, :tool_id, :tool_id2, :tool_id3, { images: [] })
+    .merge(user_id: current_user.id)
   end
 
   def resize_images
