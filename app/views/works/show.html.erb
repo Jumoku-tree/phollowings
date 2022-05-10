@@ -30,8 +30,15 @@
           </div>
           <div class="d-flex justify-content-center mt-5">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <% if @work.liked?(current_user) %>
+              <%= link_to work_like_path(@work.id), method: :delete do %>
+                <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
+              <% end %>
+            <% else %>
+              <%= link_to work_likes_path(@work.id), method: :post do %>
+                <button type="button" class="btn btn-sm btn-outline-secondary">💙</button>
+              <% end %>
+            <% end %>
             </div>
           </div>
         </div>
