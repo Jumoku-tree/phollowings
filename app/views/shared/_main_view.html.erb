@@ -25,9 +25,15 @@
           <div class="d-flex mt-1 me-5">
             <small class="text-muted">タグ１,タグ２,タグ3,タグ４,タグ5,タグ6,タグ7</small>
           </div>
+          <% if work.user_id == current_user.id %>
+            <%= link_to edit_work_path(work.id) do%>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <% end %>
+          <% else %>
             <%= link_to "#" do %>
               <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>

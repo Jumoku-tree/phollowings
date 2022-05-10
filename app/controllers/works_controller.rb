@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :set_work, only:[:edit, :update, :show]
   require 'RMagick'
   include Magick
 
@@ -13,28 +14,49 @@ class WorksController < ApplicationController
   end
 
   def new
-    @work = Work.new
+    @work_form = WorkForm.new
   end
 
   def create
-    @work = Work.new(work_params)
-    if @work.save
+    @work_form = WorkForm.new(work_form_params)
+    if @work_form.valid?
+      @work_form.save
       redirect_to root_path
     else
       render :new
     end
   end
 
+  def edit
+    work_attributes = @work.attributes
+    @work_form = WorkForm.new(work_attributes)
+  end
+
+  def update
+    @work_form = WorkForm.new(work_form_params)
+    # binding.pry
+    @work_form.images ||= @work.images.blobs
+    if @work_form.valid?
+      @work_form.update(work_form_params, @work)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def show
-    @work = Work.find(params[:id])
   end
 
   private
-  def work_params
+  def work_form_params
     params
-    .require(:work)
-    .permit(:title, :caption, :category_id, :tool_id, :tool_id2, :tool_id3, { images: [] })
+    .require(:work_form)
+    .permit(:title, :caption, :category_id, :tool_id, { images: [] })
     .merge(user_id: current_user.id)
+  end
+
+  def set_work
+    @work = Work.find(params[:id])
   end
 
   def resize_images
