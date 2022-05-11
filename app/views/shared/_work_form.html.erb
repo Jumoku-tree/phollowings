@@ -1,0 +1,38 @@
+<div class="work_wrapper">
+  <div class="new_works_field">
+    <%= form_with model: @work_form, url: url, method: method, id: 'new-work', local: true do |f| %>
+      <div class="img_previews" id="img-previews">
+        <div class="preview_img" id="preview-0">
+          <%= image_tag '/images/no_image.png', id: 'no-img', class: "img-thumbnail" %>
+        </div>
+        <div class="preview_img" id="preview-1">
+          <%= image_tag '/images/no_image.png', id: 'no-img', class: "img-thumbnail" %>
+        </div>
+      </div>
+      <div class="desc_forms">
+        <div class="mb-3", id="work-img">
+          <%= f.file_field :images, name: 'work_form[images][]', data: { index: 0 }, class: "form-control" %>
+        </div>
+        <div class="mb-3", id="work-img">
+          <%= f.file_field :images, name: 'work_form[images][]', data: { index: 1 }, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.text_field :title, placeholder: 'タイトルを入力してください。', class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.text_area :caption, placeholder: 'キャプションを入力してください。', class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.text_field :tag_name, placeholder: 'タグを入力してください。', class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"work-category"}) %>
+          <%= f.collection_select(:tool_id, Tool.all, :id, :name, {}, {class:"select-box", id:"work-tools"}) %>
+        </div>
+        <div class="mt-5 mb-3 text-center">
+          <%= f.submit '投稿する' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
