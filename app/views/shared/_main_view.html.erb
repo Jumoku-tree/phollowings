@@ -23,7 +23,9 @@
         </span>
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex mt-1 me-5">
-            <small class="text-muted">タグ１,タグ２,タグ3,タグ４,タグ5,タグ6,タグ7</small>
+            <small class="text-muted">
+              <%= work.tags&.first&.tag_name %>
+            </small>
           </div>
           <% if work.user_id == current_user.id %>
             <%= link_to edit_work_path(work.id) do%>

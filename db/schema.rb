@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_10_091731) do
+ActiveRecord::Schema.define(version: 2022_05_11_012244) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 2022_05_10_091731) do
     t.index ["work_id"], name: "index_references_on_work_id"
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "profile"
@@ -61,6 +67,15 @@ ActiveRecord::Schema.define(version: 2022_05_10_091731) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "work_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_work_tag_relations_on_tag_id"
+    t.index ["work_id"], name: "index_work_tag_relations_on_work_id"
   end
 
   create_table "work_tools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,6 +101,8 @@ ActiveRecord::Schema.define(version: 2022_05_10_091731) do
   add_foreign_key "likes", "users"
   add_foreign_key "likes", "works"
   add_foreign_key "references", "works"
+  add_foreign_key "work_tag_relations", "tags"
+  add_foreign_key "work_tag_relations", "works"
   add_foreign_key "work_tools", "users"
   add_foreign_key "works", "users"
 end

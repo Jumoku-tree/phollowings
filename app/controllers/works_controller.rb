@@ -30,6 +30,7 @@ class WorksController < ApplicationController
   def edit
     work_attributes = @work.attributes
     @work_form = WorkForm.new(work_attributes)
+    @work_form.tag_name = @work.tags&.first&.tag_name
   end
 
   def update
@@ -51,7 +52,7 @@ class WorksController < ApplicationController
   def work_form_params
     params
     .require(:work_form)
-    .permit(:title, :caption, :category_id, :tool_id, { images: [] })
+    .permit(:title, :caption, :category_id, :tool_id, :tag_name, { images: [] })
     .merge(user_id: current_user.id)
   end
 
