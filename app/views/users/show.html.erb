@@ -1,14 +1,55 @@
-<header class="d-flex flex-wrap justify-content-center py-3">
-  <%= render partial: 'shared/header' %>
-</header>
 <div class="index_body">
   <div class="sidebar">
     <%= render partial: 'shared/sidebar'%>
   </div>
   <div class="container d-flex flex-wrap justify-content-start mt-5 ms-5">
     <% @works.each do |work| %>
-    
-      <%= render partial: 'shared/main_view', locals: { work: work } %>
+      <div class="row row-cols-1 pe-5 mb-6" style="max-width: 540px;">
+        <div class="card shadow-sm">
+          <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/> %>
+          <%= link_to work_path(work.id) do %>
+            <div class="work_views">
+              <div class="before_img">
+              <%= image_tag work.images[0], class:"img-thumbnail" %>
+              </div>
+              <div class="after_img">
+              <%= image_tag work.images[1], class:"img-thumbnail" %>
+              </div>
+            </div>
+          <% end %>
+          <%# </svg> %>
+
+          <div class="card-body">
+            <div class="d-flex justify-content-between mb-2">
+            <span class="fs-5"><%= work.title %></span>
+            <span class="card-text"><%= work.user.name %></span>
+            </div>
+            <span class="card-text">
+              カテゴリ：<%= work.category.name %>
+            </span>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex mt-1 me-5">
+                <small class="text-muted">
+                  <%= work.tags&.first&.tag_name %>
+                </small>
+              </div>
+              <div class="dropdown" >
+                <% if user_signed_in? && work.user_id == current_user.id %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" id="workEditButton">Edit</button>
+                  <ul class="dropdown-menu" aria-labbeledby="workEditButton">
+                    <li><%= link_to "編集", edit_work_path(work.id), class:"dropdown-item" %></li>
+                    <li><%= link_to "削除", "#" , class:"dropdown-item" %></li>
+                  </ul>
+                <% else %>
+                  <%= link_to "#" do %>
+                    <button type="button" class="dropdown-menu btn btn-sm btn-outline-secondary">いいね</button>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 

@@ -10,9 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header class="d-flex flex-wrap py-3 ps-5">
+  <header class="d-flex flex-wrap py-3 ps-5 bg-white">
     <span class="fs-4">
-      <%= link_to 'Phollowings', root_path %>
+      <%= link_to root_path do%>
+        <%= image_tag '/images/logo.png', height: "60" %>
+      <% end %>
     </span>
   </header>
   <body>
