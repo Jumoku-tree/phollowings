@@ -1,8 +1,8 @@
 class Work < ApplicationRecord
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
   belongs_to :user
   has_many :likes, dependent: :destroy
-  has_many :work_tag_relations
+  has_many :work_tag_relations, dependent: :destroy
   has_many :tags, through: :work_tag_relations
 
   # いいねされているかどうか判定するメソッド

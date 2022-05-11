@@ -14,7 +14,8 @@ class WorkForm
   validates :caption, length:{ maximum: 2000 }
 
   def save
-    Work.create(title: title, caption: caption, user_id: user_id, category_id: category_id, tool_id: tool_id, images: images)
+    work = Work.create(title: title, caption: caption, user_id: user_id, category_id: category_id, tool_id: tool_id, images: images)
+    binding.pry
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     WorkTagRelation.create(work_id: work.id, tag_id: tag.id)

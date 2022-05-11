@@ -48,6 +48,12 @@ class WorksController < ApplicationController
   def show
   end
 
+  def destroy
+    work = Work.find(params[:id])
+    work.destroy
+    redirect_to user_path(work.user_id)
+  end
+
   private
   def work_form_params
     params

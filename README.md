@@ -24,6 +24,8 @@ Phollowings
 
 ## 洗い出した要件
 
+https://docs.google.com/spreadsheets/d/1WYBOwE-cdmaZk8ro14c82jMZPg1-i1KrzMzy6FpQHRo/edit?usp=sharing
+
 ## 実装した機能についての画像やGIF、その他説明
 
 ## 実装予定の機能
@@ -34,15 +36,23 @@ Phollowings
 - ユーザーのフォロー
 
 ## データベース設計
+![ER図](ER.png)
 
 ## 画面遷移図
+![画面遷移図](transition.png)
 
 ## 開発環境
+HTML, CSS, JavaScript, Ruby, VSCode, GitHub
 
-ローカルでの動作方法
+## ローカルでの動作方法
+% git clone https://github.com/Jumoku-tree/phollowings
+% cd phollowings
+% bundle install
+% yarn install
 
-工夫したポイント
-
+## 工夫したポイント
+- イラスト投稿がメインのアプリなので、ビューファイルはシンプルにして、投稿されたイラストが目立つようにしました。
+- タグやカテゴリ分けを用いて、見たい作品を探しやすいようにしました。
 
 
 ## DB設計
