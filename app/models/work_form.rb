@@ -15,7 +15,6 @@ class WorkForm
 
   def save
     work = Work.create(title: title, caption: caption, user_id: user_id, category_id: category_id, tool_id: tool_id, images: images)
-    binding.pry
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     WorkTagRelation.create(work_id: work.id, tag_id: tag.id)
@@ -25,7 +24,8 @@ class WorkForm
     work.work_tag_relations.destroy_all
     tag_name = params.delete(:tag_name)
     tag = Tag.where(tag_name: tag_name).first_or_initialize if tag_name.present?
-    tag.save if tag_name.present?
+    # binding.pry
+    tags.save if tag_name.present?
     work.update(params)
     WorkTagRelation.create(work_id: work.id, tag_id: tag.id) if tag_name.present?
   end
