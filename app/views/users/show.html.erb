@@ -1,4 +1,4 @@
-<div class="index_body">
+<div class="container d-flex m-0 p-0">
   <div class="sidebar">
     <%= render partial: 'shared/sidebar'%>
   </div>
@@ -31,6 +31,11 @@
               <div class="d-flex mt-1 me-5">
                 <small class="text-muted">
                   <%= work.tags&.first&.tag_name %>
+                    <% if work.tags[1].present? %>
+                      <% work.tags[1..-1].each do |tag| %>
+                        <%= tag.tag_name%>
+                      <% end %>
+                    <% end %>
                 </small>
               </div>
               

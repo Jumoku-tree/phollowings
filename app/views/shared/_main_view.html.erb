@@ -25,17 +25,15 @@
           <div class="d-flex mt-1 me-5">
             <small class="text-muted">
               <%= work.tags&.first&.tag_name %>
+                <% if work.tags[1].present? %>
+                  <% work.tags[1..-1].each do |tag| %>
+                    <%= tag.tag_name%>
+                  <% end %>
+                <% end %>
             </small>
           </div>
           <div class="btn-group">
-          <% if user_signed_in? && work.user_id == current_user.id %>
-            <%= link_to edit_work_path(work.id) do%>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            <% end %>
-            <%= link_to work_path(work.id), method: :delete do %>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-            <% end %>
-          <% else %>
+          <% if user_signed_in? %>
             <%= link_to "#" do %>
               <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
             <% end %>
