@@ -23,15 +23,15 @@ Phollowings
 自分の中でこっそりと変化を楽しんでもOK、他の人の作品の変化を観察したりしてもOK、イラスト創作者のモチベーションに繋がれば嬉しいです。
 
 ## 洗い出した要件
-
-https://docs.google.com/spreadsheets/d/1WYBOwE-cdmaZk8ro14c82jMZPg1-i1KrzMzy6FpQHRo/edit?usp=sharing
+[要件定義シート](https://docs.google.com/spreadsheets/d/1WYBOwE-cdmaZk8ro14c82jMZPg1-i1KrzMzy6FpQHRo/edit?usp=sharing)  
+Googleスプレッドシートを開きます。
 
 ## 実装した機能についての画像やGIF、その他説明
 
 ## 実装予定の機能
 - リファレンス（引用）機能
   →リファレンスを許可している投稿に関連した投稿ができる機能（例：他の人の線画を塗ってみた）
-- タグ付け機能
+- 複数タグ付け機能
 - SNSアカウントを用いてのログイン
 - ユーザーのフォロー
 
@@ -92,26 +92,3 @@ HTML, CSS, JavaScript, Ruby, VSCode, GitHub
 
 #### Association
 - belongs_to: work
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
