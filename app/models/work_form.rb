@@ -13,18 +13,23 @@ class WorkForm
   end
   validates :caption, length:{ maximum: 2000 }
 
-  def save
+  def save(tags)
     work = Work.create(title: title, caption: caption, user_id: user_id, category_id: category_id, tool_id: tool_id, images: images)
-    tag = Tag.where(tag_name: tag_name).first_or_initialize
-    tag.save
-    WorkTagRelation.create(work_id: work.id, tag_id: tag.id)
+    work_tags = []
+    tags.each do |tag|
+      work_tags << tag[:id]
+    end
+    binding.pry
+    work_tags.each do |work_tag|
+      WorkTagRelation.create(work_id: work.id, tag_id: work_tag)
+    end
+
   end
 
   def update(params, work)
     work.work_tag_relations.destroy_all
     tag_name = params.delete(:tag_name)
     tag = Tag.where(tag_name: tag_name).first_or_initialize if tag_name.present?
-    # binding.pry
     tags.save if tag_name.present?
     work.update(params)
     WorkTagRelation.create(work_id: work.id, tag_id: tag.id) if tag_name.present?

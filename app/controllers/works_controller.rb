@@ -19,10 +19,11 @@ class WorksController < ApplicationController
 
   def create
     @work_form = WorkForm.new(work_form_params)
-    binding.pry
-    tag_list = params[:work][:name]
+    tag_list = params[:work_form][:tag_name].split(",")
+    save_tag(tag_list)
+    # binding.pry
     if @work_form.valid?
-      @work_form.save
+      @work_form.save(@tags)
       redirect_to root_path
     else
       render :new
@@ -68,6 +69,15 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
   end
 
-  def resize_images
+  def save_tag(sent_tags)
+    @tags = []
+    sent_tags.each do |new_tag|
+      tag_name = new_tag
+      tag = Tag.where(tag_name: tag_name).first_or_initialize
+      @tags << tag
+    end
+    @tags.each do |tag|
+      tag.save
+    end
   end
 end
