@@ -27,6 +27,8 @@ Phollowings
 Googleスプレッドシートを開きます。
 
 ## 実装した機能についての画像やGIF、その他説明
+### トップページ
+![トップページ画像](/public/introduce/index.jpg)
 
 ## 実装予定の機能
 - リファレンス（引用）機能
@@ -36,10 +38,10 @@ Googleスプレッドシートを開きます。
 - ユーザーのフォロー
 
 ## データベース設計
-![ER図](ER.png)
+![ER図](/public/introduce/ER.png)
 
 ## 画面遷移図
-![画面遷移図](transition.png)
+![画面遷移図](/public/introduce/transition.png)
 
 ## 開発環境
 HTML, CSS, JavaScript, Ruby, VSCode, GitHub
