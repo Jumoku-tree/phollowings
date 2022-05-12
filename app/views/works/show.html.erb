@@ -3,7 +3,11 @@
       <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"> %>
       <div class="d-flex w-75">
         <%= image_tag @work.images[0], class: "image-fluid w-50" %>
-        <%= image_tag @work.images[1], class: "image-fluid w-50 ms-2" %>
+        <% if @work.images[1].nil? %>
+        <% else %>
+          <%= image_tag @work.images[1], class:"img-thumbnail" %>
+        <% end %>
+
       </div>
       <%# </svg> %>
       <div class="card_wrapper">

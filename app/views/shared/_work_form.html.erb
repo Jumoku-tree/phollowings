@@ -3,18 +3,18 @@
     <%= form_with model: @work_form, url: url, method: method, id: 'new-work', local: true do |f| %>
       <div class="img_previews" id="img-previews">
         <div class="preview_img" id="preview-0">
-          <%= image_tag '/images/no_image.png', id: 'no-img', class: "img-thumbnail" %>
+          <%= image_tag '/images/no_image.png', id: 'no-img0', class: "img-thumbnail" %>
         </div>
         <div class="preview_img" id="preview-1">
-          <%= image_tag '/images/no_image.png', id: 'no-img', class: "img-thumbnail" %>
+          <%= image_tag '/images/no_image.png', id: 'no-img1', class: "img-thumbnail" %>
         </div>
       </div>
       <div class="desc_forms">
-        <div class="mb-3", id="work-img">
-          <%= f.file_field :images, name: 'work_form[images][]', data: { index: 0 }, class: "form-control" %>
+        <div class="mb-3" id="img-upload-0">
+          <%= f.file_field :images, name: 'work_form[images][]', data: { index: 0 }, class: "form-control", id: "upload-0" %>
         </div>
-        <div class="mb-3", id="work-img">
-          <%= f.file_field :images, name: 'work_form[images][]', data: { index: 1 }, class: "form-control" %>
+        <div class="mb-3" id="img-upload-1">
+          <%= f.file_field :images, name: 'work_form[images][]', data: { index: 1 }, class: "form-control", id: "upload-1" %>
         </div>
         <div class="mb-3">
           <%= f.text_field :title, placeholder: 'タイトルを入力してください。', class: "form-control" %>

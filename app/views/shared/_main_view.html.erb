@@ -7,7 +7,11 @@
           <%= image_tag work.images[0], class:"img-thumbnail" %>
           </div>
           <div class="after_img">
-          <%= image_tag work.images[1], class:"img-thumbnail" %>
+            <% if work.images[1].nil? %>
+              <%= image_tag "/images/no_image.png", class:"img-thumbnail" %>
+            <% else %>
+              <%= image_tag work.images[1], class:"img-thumbnail" %>
+            <% end %>
           </div>
         </div>
       <% end %>

@@ -4,9 +4,16 @@ body {
   box-sizing: border-box;
 }
 
+main{
+  padding-top: 90px;
+}
+
 header{
+  width: 100vw;
   height: 90px;
   overflow: hidden;
+  position: fixed;
+  z-index: 1;
 }
 
 .sidebar{
