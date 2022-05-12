@@ -21,7 +21,6 @@ class WorksController < ApplicationController
     @work_form = WorkForm.new(work_form_params)
     tag_list = params[:work_form][:tag_name].split(",")
     save_tag(tag_list)
-    # binding.pry
     if @work_form.valid?
       @work_form.save(@tags)
       redirect_to root_path
@@ -38,7 +37,6 @@ class WorksController < ApplicationController
 
   def update
     @work_form = WorkForm.new(work_form_params)
-    # binding.pry
     @work_form.images ||= @work.images.blobs
     if @work_form.valid?
       @work_form.update(work_form_params, @work)

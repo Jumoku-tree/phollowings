@@ -19,7 +19,6 @@ class WorkForm
     tags.each do |tag|
       work_tags << tag[:id]
     end
-    binding.pry
     work_tags.each do |work_tag|
       WorkTagRelation.create(work_id: work.id, tag_id: work_tag)
     end

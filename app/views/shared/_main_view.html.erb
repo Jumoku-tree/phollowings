@@ -38,8 +38,10 @@
           </div>
           <div class="btn-group">
           <% if user_signed_in? %>
-            <%= link_to "#" do %>
-              <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
+            <% if work.liked?(current_user) %>
+              <%= link_to "❤︎", "#", class:"link-info" %>
+            <% else %>
+              <%= link_to "♡", work_likes_path(work.id), method: :create, class:"link-info" %>
             <% end %>
           <% end %>
           </div>

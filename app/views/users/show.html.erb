@@ -13,7 +13,11 @@
               <%= image_tag work.images[0], class:"img-thumbnail" %>
               </div>
               <div class="after_img">
+            <% if work.images[1].nil? %>
+              <%= image_tag "/images/no_image.png", class:"img-thumbnail" %>
+            <% else %>
               <%= image_tag work.images[1], class:"img-thumbnail" %>
+            <% end %>
               </div>
             </div>
           <% end %>
@@ -44,12 +48,10 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><%= link_to "編集", edit_work_path(work.id), class:"dropdown-item" %></li>
-                    <li><%= link_to "削除", "#" , class:"dropdown-item" %></li>
+                    <li><%= link_to "削除", work_path(work.id) method: :delete , class:"dropdown-item" %></li>
                   </ul>
                 <% else %>
-                  <%= link_to "#" do %>
-                    <button type="button" class="dropdown-menu btn btn-sm btn-outline-secondary">いいね</button>
-                  <% end %>
+                  <%= link_to "♡", "#"%>
                 <% end %>
               </div>
             </div>
