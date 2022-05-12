@@ -19,6 +19,8 @@ class WorksController < ApplicationController
 
   def create
     @work_form = WorkForm.new(work_form_params)
+    binding.pry
+    tag_list = params[:work][:name]
     if @work_form.valid?
       @work_form.save
       redirect_to root_path
