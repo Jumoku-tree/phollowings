@@ -50,8 +50,6 @@ test:
 production:
   <<: *default
   database: phollowings_production
-  username: phollowings
-  password: <%= ENV['PHOLLOWINGS_DATABASE_PASSWORD'] %>
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
