@@ -48,7 +48,7 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Edit</button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><%= link_to "編集", edit_work_path(work.id), class:"dropdown-item" %></li>
-                    <li><%= link_to "削除", work_path(work.id) method: :delete , class:"dropdown-item" %></li>
+                    <li><%= link_to "削除", work_path(work.id), method: :delete , class:"dropdown-item" %></li>
                   </ul>
                 <% else %>
                   <%= link_to "♡", "#"%>
