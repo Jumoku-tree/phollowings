@@ -3,8 +3,8 @@
     <%= render partial: 'shared/sidebar'%>
   </div>
   <div class="container d-flex flex-wrap justify-content-start mt-5 ms-5">
-    <% @works.each do |work| %>
-      <%= render partial: 'shared/show_index', locals: { work: work } %>
+    <% @like_works.each do |like_work| %>
+      <%= render partial: 'shared/show_index', locals: { work: like_work } %>
     <% end %>
   </div>
 
