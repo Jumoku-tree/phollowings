@@ -2,14 +2,10 @@
     <div class="d-flex pt-5">
       <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"> %>
       <div class="d-flex w-75 flex-wrap">
-        <div>
-        <%= image_tag @work.images[0], class: "w-100" %>
-        </div>
+        <%= image_tag @work.images[0], class: "w-50" %>
         <% if @work.images[1].nil? %>
         <% else %>
-        <div>
-          <%= image_tag @work.images[1], class: "w-100" %>
-        </div>
+          <%= image_tag @work.images[1], class: "w-50" %>
         <% end %>
 
       </div>
@@ -20,7 +16,15 @@
           <p class="card-text"><%= @work.caption %></p>
           <div>
             <div class="d-flex">
-              <small class="text-muted mb-3">#tags</small>
+              <small class="text-muted mb-3">
+                <%= @work.tags&.first&.tag_name %>
+                <% if @work.tags[1].present? %>
+                  <% @work.tags[1..-1].each do |tag| %>
+                    <%= tag.tag_name%>
+                  <% end %>
+                <% end %>
+
+              </small>
             </div>
             <div class="d-flex justify-content-between">
               <div>

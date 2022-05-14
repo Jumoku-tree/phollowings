@@ -7,9 +7,11 @@ class WorksController < ApplicationController
     @works = Work.includes(:user).order("created_at DESC")
     @works.each do |work|
       images = work.images
-      images.each do |image|
-        image.variant(gravity: :center, resize: "270x450^", crop: "270x450+0+0").processed
-      end
+      # if work.images.attached?
+      #   images.each do |image|
+      #     image.variant(gravity: :center, resize: "270x450^", crop: "270x450+0+0").processed
+      #   end
+      # end
     end
   end
 
@@ -33,6 +35,7 @@ class WorksController < ApplicationController
     work_attributes = @work.attributes
     @work_form = WorkForm.new(work_attributes)
     @work_form.tag_name = @work.tags&.first&.tag_name
+    @tools = Tool.all
   end
 
   def update

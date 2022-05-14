@@ -3,10 +3,10 @@
     <%= form_with model: @work_form, url: url, method: method, id: 'new-work', local: true do |f| %>
       <div class="img_previews" id="img-previews">
         <div class="preview_img" id="preview-0">
-          <%= image_tag '/images/no_image.png', id: 'no-img0', class: "img-thumbnail" %>
+          <%= image_tag asset_path('/assets/no_image.png'), id: 'no-img0', class: "img-thumbnail" %>
         </div>
         <div class="preview_img" id="preview-1">
-          <%= image_tag '/images/no_image.png', id: 'no-img1', class: "img-thumbnail" %>
+          <%= image_tag asset_path('/assets/no_image.png'), id: 'no-img1', class: "img-thumbnail" %>
         </div>
       </div>
       <div class="desc_forms">
@@ -28,8 +28,11 @@
         </div>
         <div class="mb-3">
           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"work-category"}) %>
-          <%= f.collection_select(:tool_id, Tool.all, :id, :name, {}, {class:"select-box", id:"work-tools"}) %>
         </div>
+        <div class="mb-3">
+          <%= f.collection_select(:tool_id, Tool.all, :id, :name, {}, { class:"select-box", id:"work-tools0"}) %>
+        </div>
+
         <div class="mt-5 mb-3 text-center">
           <%= f.submit '投稿する' %>
         </div>

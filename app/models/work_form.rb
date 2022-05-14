@@ -1,7 +1,7 @@
 class WorkForm
   include ActiveModel::Model
   attr_accessor(
-    :title, :caption, :user_id, :category_id, :tool_id, :images,
+    :title, :caption, :user_id, :tool_id, :category_id, :images,
     :id, :created_at, :datetime, :updated_at, :datetime,
     :tag_name
   )
@@ -33,4 +33,5 @@ class WorkForm
     work.update(params)
     WorkTagRelation.create(work_id: work.id, tag_id: tag.id) if tag_name.present?
   end
+
 end

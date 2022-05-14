@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_012244) do
+ActiveRecord::Schema.define(version: 2022_05_14_163732) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 2022_05_11_012244) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tool_name", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "profile"
@@ -79,11 +83,11 @@ ActiveRecord::Schema.define(version: 2022_05_11_012244) do
   end
 
   create_table "work_tools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "work_id", null: false
     t.integer "tool_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_work_tools_on_user_id"
+    t.index ["work_id"], name: "index_work_tools_on_work_id"
   end
 
   create_table "works", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,9 +95,9 @@ ActiveRecord::Schema.define(version: 2022_05_11_012244) do
     t.text "caption"
     t.bigint "user_id", null: false
     t.integer "category_id", null: false
-    t.integer "tool_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tool_id"
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 
@@ -103,6 +107,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_012244) do
   add_foreign_key "references", "works"
   add_foreign_key "work_tag_relations", "tags"
   add_foreign_key "work_tag_relations", "works"
-  add_foreign_key "work_tools", "users"
+  add_foreign_key "work_tools", "users", column: "work_id"
   add_foreign_key "works", "users"
 end
