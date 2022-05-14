@@ -1,2 +1,0 @@
-class WorkTool < ApplicationRecord
-end
