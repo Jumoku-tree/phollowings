@@ -40,13 +40,9 @@
           <div class="d-flex justify-content-center mt-5">
             <div class="btn-group">
             <% if @work.liked?(current_user) %>
-              <%= link_to work_like_path(@work.id), method: :delete do %>
-                <button type="button" class="btn btn-sm btn-outline-secondary">いいね</button>
-              <% end %>
+              <%= link_to "❤︎", work_like_path(@work.id), method: :delete %>
             <% else %>
-              <%= link_to work_likes_path(@work.id), method: :post do %>
-                <button type="button" class="btn btn-sm btn-outline-secondary">💙</button>
-              <% end %>
+              <%= link_to "♡", work_likes_path(@work.id), method: :post %>
             <% end %>
             </div>
           </div>
@@ -54,6 +50,8 @@
       </div>
     </div>
     <div class="card_wrapper">
+    <%= link_to user_path(@work.user_id) do%>
       <p class="text-center">この人の作品一覧を見る</p>
+    <% end %>
     </div>
   </div>

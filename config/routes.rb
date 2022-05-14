@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :references, only: :create
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+      get :likes
+    end
+  end
 end
