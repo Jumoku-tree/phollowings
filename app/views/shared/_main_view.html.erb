@@ -36,15 +36,15 @@
                 <% end %>
             </small>
           </div>
-          <div class="btn-group">
-          <% if user_signed_in? %>
-            <% if work.liked?(current_user) %>
-              <%= link_to "❤︎", "#", class:"link-info" %>
-            <% else %>
-              <%= link_to "♡", work_likes_path(work.id), method: :create, class:"link-info" %>
-            <% end %>
-          <% end %>
-          </div>
+          <%# <div class="btn-group"> %>
+            <%# <% if user_signed_in? %>
+              <%# <% if work.liked?(current_user) %>
+                <%# <%= link_to "❤︎", "#", class:"link-info" %>
+              <%# <% else %>
+                <%# <%= link_to "♡", work_likes_path(work.id), method: :create, class:"link-info" %>
+              <%# <% end %>
+            <%# <% end %>
+          <%# </div> %>
         </div>
       </div>
     </div>

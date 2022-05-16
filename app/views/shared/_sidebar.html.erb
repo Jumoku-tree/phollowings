@@ -3,10 +3,16 @@
 		<div>
 			<% if !user_signed_in? %>
 				<li class="nav-item">
-					<%= link_to "ログイン", new_user_session_path, class:"nav-link link-dark" %>
+					<%= link_to new_user_session_path, class:"nav-link link-dark" do %>
+						<%= image_tag '/assets/icon-login.png', size:"24x24", class:"bi"%>
+						<span class="align-middle">ログイン</span>
+					<% end %>
 				</li>
 				<li>
-					<%= link_to "新規登録", new_user_registration_path, class:"nav-link link-dark" %>
+					<%= link_to new_user_registration_path, class:"nav-link link-dark" do %>
+						<%= image_tag '/assets/icon-signup.png', size:"24x24", class:"bi"%>
+						<span class="align-middle">新規登録</span>
+					<% end %>
 				</li>
 			<% else %>
 				<li>
