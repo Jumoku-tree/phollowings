@@ -40,9 +40,13 @@
           <div class="d-flex justify-content-center mt-5">
             <div class="btn-group">
             <% if @work.liked?(current_user) %>
-              <%= link_to "❤︎", work_like_path(@work.id), method: :delete %>
+              <%= link_to work_like_path(@work.id), method: :delete do %>
+                <%= image_tag "/assets/icon-heart-pink.png", width:"24", height:"24" %>
+              <% end %>
             <% else %>
-              <%= link_to "♡", work_likes_path(@work.id), method: :post %>
+              <%= link_to work_likes_path(@work.id), method: :post do %>
+                <% image_tag "/assets/icon-heart.png", width:"24", height: "24" %>
+              <% end %>
             <% end %>
             </div>
           </div>

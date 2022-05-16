@@ -23,7 +23,10 @@
 				</li>
 				<li>
 					<a href="#" class="nav-link link-dark">
-					<%= link_to "❤︎一覧", likes_user_path(current_user.id), class: "nav-link link-dark" %>
+					<%= link_to likes_user_path(current_user.id), class: "nav-link link-dark" do %>
+						<%= image_tag "/assets/icon-heart-pink.png", size:"24x24", class:"bi" %>
+						<span class="align-middle">一覧</span>
+					<% end %>
 					</a>
 				</li>
 			<% end %>
