@@ -21,6 +21,7 @@ class WorksController < ApplicationController
 
   def create
     @work_form = WorkForm.new(work_form_params)
+    # binding.pry
     tag_list = params[:work_form][:tag_name].split(",")
     save_tag(tag_list)
     if @work_form.valid?
