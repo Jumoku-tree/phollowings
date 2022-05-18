@@ -9,7 +9,7 @@ class WorkForm
     validates :title, length: { maximum: 40 }
     validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :tool_id, numericality: { other_than: 1, message: "can't be blank" }
-    validates :images
+    validates :images, length: {maximum: 2, message: "must be attached whitin 2"}
   end
   validates :caption, length:{ maximum: 2000 }
 

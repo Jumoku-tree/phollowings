@@ -7,11 +7,6 @@ class WorksController < ApplicationController
     @works = Work.includes(:user).order("created_at DESC")
     @works.each do |work|
       images = work.images
-      # if work.images.attached?
-      #   images.each do |image|
-      #     image.variant(gravity: :center, resize: "270x450^", crop: "270x450+0+0").processed
-      #   end
-      # end
     end
   end
 
@@ -81,5 +76,9 @@ class WorksController < ApplicationController
     @tags.each do |tag|
       tag.save
     end
+  end
+
+  def move_to_index
+    
   end
 end
