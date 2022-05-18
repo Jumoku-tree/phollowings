@@ -37,7 +37,7 @@
 		<% if user_signed_in? %>
 			<%= link_to "#{current_user.name} さん", "#", class:"nav-link link-dark" %>
 			<ul class="nav nav-pills flex-column fw-normal pb-1 small">
-				<li><a href="#" class="nav-link link-dark pb-0">設定</a></li>
+				<li><%= link_to "設定", "#", class:"nav-link link-dark pb-0" %></li>
 				<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link link-dark pb-0" %></li>
 			</ul>
 		<% end %>
