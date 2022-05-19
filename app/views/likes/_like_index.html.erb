@@ -1,0 +1,11 @@
+<% if work.liked?(current_user) %>
+  <%= link_to work_likes_path(work), method: :delete, remote: true, class:"text-decoration-none" do %>
+    <%= image_tag "/assets/icon-heart-pink.png", width:"24", height:"24" %>
+    <span class="text-muted"><%= work.likes.count %></span>
+  <% end %>
+<% else %>
+  <%= link_to work_likes_path(work), method: :post, remote: true, class:"text-decoration-none" do %>
+    <%= image_tag "/assets/icon-heart.png", width:"24", height: "24" %>
+    <span class="text-muted text-decoration-none"><%= work.likes.count %></span>
+  <% end %>
+<% end %>

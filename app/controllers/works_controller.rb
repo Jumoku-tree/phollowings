@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :authenticate_user!, except: :index
   before_action :set_work, only:[:edit, :update, :show]
   require 'RMagick'
   include Magick
@@ -78,7 +79,4 @@ class WorksController < ApplicationController
     end
   end
 
-  def move_to_index
-    
-  end
 end

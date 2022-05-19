@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_work
   def create
     @work_like = Like.new(user_id: current_user.id, work_id: params[:work_id])
