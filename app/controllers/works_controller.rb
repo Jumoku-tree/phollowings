@@ -17,7 +17,6 @@ class WorksController < ApplicationController
 
   def create
     @work_form = WorkForm.new(work_form_params)
-    # binding.pry
     tag_list = params[:work_form][:tag_name].split(",")
     save_tag(tag_list)
     if @work_form.valid?
@@ -53,6 +52,10 @@ class WorksController < ApplicationController
     work = Work.find(params[:id])
     work.destroy
     redirect_to user_path(work.user_id)
+  end
+
+  def search
+    @works = Work.search(params[:keyword])
   end
 
   private

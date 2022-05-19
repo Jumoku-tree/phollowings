@@ -10,6 +10,14 @@ class Work < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
+  def self.search(search)
+    if search != ""
+      Work.where('caption LIKE(?)', "%#{search}%")
+    else
+      Work.all
+    end
+  end
+
   # アクティブハッシュ用
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
