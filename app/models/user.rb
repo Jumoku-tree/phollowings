@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :works
   has_many :likes
+
+  validates :name, presence: true, length: { maximum: 10 , message: "must be within 10 characters"}
+  validates :password, length: { minimum: 8, message: "must be 8 characters or more" }
 end
