@@ -28,10 +28,22 @@ class WorkForm
   def update(params, work)
     work.work_tag_relations.destroy_all
     tag_name = params.delete(:tag_name)
-    tag = Tag.where(tag_name: tag_name).first_or_initialize if tag_name.present?
-    tags.save if tag_name.present?
+    tag_names = tag_name.split(",")
+    tags = []
+    if tag_names.present?
+      tag_names.each do |tag_name|
+        tag = Tag.where(tag_name: tag_name).first_or_initialize
+        tags << tag
+      end
+      tags.each do |tag|
+        tag.save
+      end
+    end
     work.update(params)
-    WorkTagRelation.create(work_id: work.id, tag_id: tag.id) if tag_name.present?
+    if tag_names.present?
+      tags.each do |tag|
+        WorkTagRelation.create(work_id: work.id, tag_id: tag.id)
+      end
+    end
   end
-
 end

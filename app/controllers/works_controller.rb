@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :move_to_index, only: :edit
   before_action :authenticate_user!, except: :index
   before_action :set_work, only:[:edit, :update, :show]
   require 'RMagick'
@@ -17,7 +18,6 @@ class WorksController < ApplicationController
 
   def create
     @work_form = WorkForm.new(work_form_params)
-    # binding.pry
     tag_list = params[:work_form][:tag_name].split(",")
     save_tag(tag_list)
     if @work_form.valid?
@@ -31,7 +31,8 @@ class WorksController < ApplicationController
   def edit
     work_attributes = @work.attributes
     @work_form = WorkForm.new(work_attributes)
-    @work_form.tag_name = @work.tags&.first&.tag_name
+    current_tag_names = @work.tags.map{ |tag| tag[:tag_name] }
+    @work_form.tag_name = current_tag_names.join(",")
     @tools = Tool.all
   end
 
@@ -55,6 +56,10 @@ class WorksController < ApplicationController
     redirect_to user_path(work.user_id)
   end
 
+  def search
+    @works = Work.search(params[:keyword])
+  end
+
   private
   def work_form_params
     params
@@ -76,6 +81,13 @@ class WorksController < ApplicationController
     end
     @tags.each do |tag|
       tag.save
+    end
+  end
+
+  def move_to_index
+    work = Work.find(params[:id])
+    unless current_user.id == work.user_id
+      redirect_to root_path
     end
   end
 

@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: 'works#index'
   resources :works do
     resource :likes, only: [:create, :destroy]
-    resources :references, only: :create
-  end
+      collection do
+        get 'search'
+      end
+    end
   resources :users, only: :show do
     member do
       get :likes
