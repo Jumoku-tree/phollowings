@@ -6,6 +6,7 @@ class WorkForm
     :tag_name
   )
   with_options presence: true do
+    validates :user_id
     validates :title, length: { maximum: 40 }
     validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :tool_id, numericality: { other_than: 1, message: "can't be blank" }
