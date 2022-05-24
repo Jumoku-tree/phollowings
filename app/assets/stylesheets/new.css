@@ -28,6 +28,10 @@
   margin-right: 10px;
 }
 
+.preview_img img{
+  object-fit: contain;
+}
+
 .desc_forms{
   width: 100%;
 }
