@@ -1,51 +1,76 @@
-  <div class="row row-cols-1 pe-5 mb-6" style="max-width: 540px; max-height: 600px;">
-    <div class="card shadow-sm">
-      <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/> %>
-        <div id="myCarousel" class="carousel carousel-fade slide mt-3" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          </div>
-          <%= link_to work_path(work.id) do %>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <%= image_tag work.images[0], class:"img-thumbnail bd-placeholder-img" %>
+<style>
+  div .row{
+    max-width: 540px;
+    max-height: 840px;
+  }
 
-              </div>
-              <div class="carousel-item">
-                <% if work.images[1].nil? %>
-                  <%= image_tag "/assets/no_image.png", class:"img-thumbnail" %>
-                <% else %>
-                  <%= image_tag work.images[1], class:"img-thumbnail" %>
-                <% end %>
+  .card{
+    height: auto;
+  }
 
-              </div>
+  div .carousel{
+    position: relative;
+    min-height: 50%;
+  }
+  .carousel-item {
+    position: relative;
+    height: 100%;
+  }
+
+  .carousel-item > img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 720px;
+  }
+</style>
+<div class="row row-cols-1 pe-5 mb-6">
+  <div class="card shadow-sm">
+    <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/> %>
+      <div id="myCarousel" class="carousel carousel-fade slide mt-3" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <%= link_to work_path(work.id) do %>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag work.images[0], class:"img-thumbnail" %>
+
             </div>
-          <% end %>
-        </div>
-      <%# </svg> %>
+            <div class="carousel-item">
+              <% if work.images[1].nil? %>
+                <%= image_tag "/assets/no_image.png", class:"img-thumbnail" %>
+              <% else %>
+                <%= image_tag work.images[1], class:"img-thumbnail" %>
+              <% end %>
 
-      <div class="card-body">
-        <div class="d-flex justify-content-between mb-2">
-        <span class="fs-5"><%= work.title %></span>
-        <span class="card-text"><%= work.user.name %></span>
-        </div>
-        <span class="card-text">
-          カテゴリ：<%= work.category.name %>
-        </span>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex mt-1 me-5">
-            <small class="text-muted">
-              <%= work.tags&.first&.tag_name %>
-                <% if work.tags[1].present? %>
-                  <% work.tags[1..-1].each do |tag| %>
-                    <%= tag.tag_name%>
-                  <% end %>
-                <% end %>
-            </small>
+            </div>
           </div>
+        <% end %>
+      </div>
+    <%# </svg> %>
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between mb-2">
+      <span class="fs-5"><%= work.title %></span>
+      <span class="card-text"><%= work.user.name %></span>
+      </div>
+      <span class="card-text">
+        カテゴリ：<%= work.category.name %>
+      </span>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex mt-1 me-5">
+          <small class="text-muted">
+            <%= work.tags&.first&.tag_name %>
+              <% if work.tags[1].present? %>
+                <% work.tags[1..-1].each do |tag| %>
+                  <%= tag.tag_name%>
+                <% end %>
+              <% end %>
+          </small>
         </div>
       </div>
     </div>
   </div>
+</div>
 
