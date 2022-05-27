@@ -7,6 +7,11 @@ Phollowings
 例えばお気に入りのブラシを見つけたとき、新たな加工方法を見つけたときなど。
 自分だけのメモにも仲間との共有にも利用できます。
 
+## 更新履歴
+### 2022/5/27
+- 更新履歴を追加しました。
+- 検索機能をキャプションだけでなくタイトルからも検索できるようにしました。
+
 ## 利用方法
 ### 作品投稿
 1.トップページの左側サイドバーから新規ユーザー登録をします。
@@ -35,9 +40,9 @@ Googleスプレッドシートを開きます。
 ## 実装予定の機能
 - リファレンス（引用）機能
   →リファレンスを許可している投稿に関連した投稿ができる機能（例：他の人の線画を塗ってみた）
-- 複数タグ付け機能
 - SNSアカウントを用いてのログイン
 - ユーザーのフォロー
+- 投稿非公開機能
 
 ## データベース設計
 ![ER図](/public/introduce/ER.png)
@@ -46,7 +51,7 @@ Googleスプレッドシートを開きます。
 ![画面遷移図](/public/introduce/transition.png)
 
 ## 開発環境
-HTML, CSS, JavaScript, Ruby, VSCode, GitHub
+HTML, CSS, JavaScript, JQuery, Bootstrap, Ruby, VSCode, GitHub
 
 ## ローカルでの動作方法
 % git clone https://github.com/Jumoku-tree/phollowings

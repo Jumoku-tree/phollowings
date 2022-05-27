@@ -12,7 +12,7 @@ class Work < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Work.where('caption LIKE(?)', "%#{search}%")
+      Work.where(['caption LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
     else
       Work.all
     end
