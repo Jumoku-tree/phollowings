@@ -10,9 +10,13 @@ class Work < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
-  def self.search(search)
+  def self.search(search, category_id)
     if search != ""
-      Work.where(['caption LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+      if category_id == "1"
+        Work.where(['caption LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+      else
+        Work.where(['caption LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"]).where('category_id = ?', "#{category_id}")
+      end
     else
       Work.all
     end
