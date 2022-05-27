@@ -57,7 +57,8 @@ class WorksController < ApplicationController
   end
 
   def search
-    @works = Work.search(params[:keyword])
+    @works = Work.search(params[:keyword], params[:category_id])
+    # binding.pry
   end
 
   private
