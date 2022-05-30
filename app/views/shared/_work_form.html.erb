@@ -22,17 +22,25 @@
         <div class="mb-3">
           <%= f.text_area :caption, placeholder: 'キャプションを入力してください。', class: "form-control" %>
         </div>
-        <div class="mb-3">
+        <div class="mb-4">
           <%= f.text_field :tag_name, placeholder: '複数のタグはカンマ(,)で区切って入力してください。例: #イラスト,#加工', class: "form-control" %>
-
         </div>
         <div class="mb-3">
           【必須】<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"work-category"}) %>
         </div>
-        <div class="mb-3">
+        <div class="mb-4">
           【必須】<%= f.collection_select(:tool_id, Tool.all, :id, :name, {}, { class:"select-box", id:"work-tools0"}) %>
         </div>
-
+        <div class="d-flex">
+          <div class="mb-3 me-2">
+            <%= f.radio_button :status, :public, checked: true %>
+            公開
+          </div>
+          <div class="mb-3">
+            <%= f.radio_button :status, :private %>
+            非公開（投稿者のみ閲覧可能）
+          </div>
+        </div>
         <div class="mt-5 mb-3 text-center">
           <%= f.submit '投稿する' %>
         </div>

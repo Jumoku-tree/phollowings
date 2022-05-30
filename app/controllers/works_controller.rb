@@ -6,7 +6,8 @@ class WorksController < ApplicationController
   include Magick
 
   def index
-    @works = Work.includes(:user).order("created_at DESC")
+    @works = Work.includes(:user).includes(:tags).order("created_at DESC")
+    # binding.pry
     @works.each do |work|
       images = work.images
     end

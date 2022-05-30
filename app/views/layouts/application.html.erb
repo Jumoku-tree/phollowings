@@ -17,22 +17,22 @@
         <%= image_tag asset_path('/assets/Logo.png'), height: "60" %>
       <% end %>
     </span>
-    <div class="row g-5 justify-content-end">
-      <div class="col-9 d-flex pe-6">
-        <%= form_with(url: search_works_path, local: true, method: :get, class: "form-control border-0 p-0") do |form| %>
-            <%= form.text_field :keyword, placeholder: "作品を検索する", class: "form-contorol col-6" %>
-            <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box col-4 small", id:"work-category"}) %>
-            <%= form.submit "検索"%>
-        <% end %>
+    <% unless current_page?(new_work_path) %>
+      <div class="row g-5 justify-content-end">
+        <div class="col-9 d-flex pe-6">
+          <%= form_with(url: search_works_path, local: true, method: :get, class: "form-control border-0 p-0") do |form| %>
+              <%= form.text_field :keyword, placeholder: "作品を検索する", class: "form-contorol col-6" %>
+              <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box col-4 small", id:"work-category"}) %>
+              <%= form.submit "検索"%>
+          <% end %>
+        </div>
+        <div class="col-3">
+          <%= link_to new_work_path do %>
+          <button type="button" class="btn btn btn-secondary">投稿する</button>
+          <% end %>
+        </div>
       </div>
-      <div class="col-3">
-        <% unless current_page?(new_work_path) %>
-        <%= link_to new_work_path do %>
-        <button type="button" class="btn btn btn-secondary">投稿する</button>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </header>
   <main>
     <%= yield %>
