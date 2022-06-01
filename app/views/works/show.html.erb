@@ -95,70 +95,79 @@
   </style>
 
   <div class="container-md mt-5 pb-1 bg-white">
-    <div class="d-flex pt-5 ">
-      
-      <div id="myCarousel" class="carousel carousel-dark carousel-fade slide w-75" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <% if @work.status_private? && @work.user_id != current_user.id %>
+      <div class="work_wrapper text-center">
+        <div class="new_works_field d-block">
+          <h4 class="mb-5">非公開の作品です。</h4>
+          <p><%= link_to "トップページに戻る" , root_path %></p>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag @work.images[0], class:"d-block"%>
-          </div>
-          <% if @work.images[1].nil? %>
-          <% else %>
-          <div class="carousel-item">
-            <%= image_tag @work.images[1], class:"d-block" %>
-          </div>
-          <% end %>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-
-      <div class="card_wrapper">
-        <div class="card-body ms-4 justify-content-center">
-          <h5 class="fw-bold"><%= @work.title %></h5>
-          <p class="card-text"><%= @work.caption %></p>
-          <div>
-            <div class="d-flex">
-              <small class="text-muted mb-3">
-                <%= @work.tags&.first&.tag_name %>
-                <% if @work.tags[1].present? %>
-                  <% @work.tags[1..-1].each do |tag| %>
-                    <%= tag.tag_name%>
-                  <% end %>
-                <% end %>
-
-              </small>
+    <% else %>
+      <div class="d-flex pt-5 ">
+        
+        <div id="myCarousel" class="carousel carousel-dark carousel-fade slide w-75" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag @work.images[0], class:"d-block"%>
             </div>
-            <div class="d-flex justify-content-between">
-              <div>
-                <small class="text-muted">2022/5/12</small>
-              </div>
-              <div class="ms-4">
-                <small class="text-muted">使用ツール: 
-                <%= @work.tool.name %>
+            <% if @work.images[1].nil? %>
+            <% else %>
+            <div class="carousel-item">
+              <%= image_tag @work.images[1], class:"d-block" %>
+            </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class="card_wrapper">
+          <div class="card-body ms-4 justify-content-center">
+            <h5 class="fw-bold"><%= @work.title %></h5>
+            <p class="card-text"><%= @work.caption %></p>
+            <div>
+              <div class="d-flex">
+                <small class="text-muted mb-3">
+                  <%= @work.tags&.first&.tag_name %>
+                  <% if @work.tags[1].present? %>
+                    <% @work.tags[1..-1].each do |tag| %>
+                      <%= tag.tag_name%>
+                    <% end %>
+                  <% end %>
+
                 </small>
               </div>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <small class="text-muted">2022/5/12</small>
+                </div>
+                <div class="ms-4">
+                  <small class="text-muted">使用ツール: 
+                  <%= @work.tool.name %>
+                  </small>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="d-flex justify-content-left mt-5" id="heart_<% @work.id %>">
-            <%= render partial: "likes/like" , locals:{ work: @work } %>
+            <div class="d-flex justify-content-left mt-5" id="heart_<% @work.id %>">
+              <%= render partial: "likes/like" , locals:{ work: @work } %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="card_wrapper">
-    <%= link_to user_path(@work.user_id) do %>
-      <p class="text-center">この人の作品一覧を見る</p>
+      <div class="card_wrapper">
+        <%= link_to user_path(@work.user_id) do %>
+          <p class="text-center">この人の作品一覧を見る</p>
+        <% end %>
+      </div>
     <% end %>
-    </div>
   </div>

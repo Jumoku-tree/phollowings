@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   include Magick
 
   def index
-    @works = Work.includes(:user).includes(:tags).order("created_at DESC")
+    @works = Work.status_public.includes(:user).includes(:tags).order("created_at DESC")
     # binding.pry
     @works.each do |work|
       images = work.images
@@ -66,7 +66,7 @@ class WorksController < ApplicationController
   def work_form_params
     params
     .require(:work_form)
-    .permit(:title, :caption, :category_id, :tool_id, :tag_name, { images: [] })
+    .permit(:title, :caption, :category_id, :tool_id, :tag_name, :status, { images: [] })
     .merge(user_id: current_user.id)
   end
 
