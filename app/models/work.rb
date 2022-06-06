@@ -4,6 +4,7 @@ class Work < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :work_tag_relations, dependent: :destroy
   has_many :tags, through: :work_tag_relations
+  enum status: { public: 0, private: 1 }, _prefix: true
 
   # いいねされているかどうか判定するメソッド
   def liked?(user)

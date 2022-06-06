@@ -1,7 +1,7 @@
 class WorkForm
   include ActiveModel::Model
   attr_accessor(
-    :title, :caption, :user_id, :tool_id, :category_id, :images,
+    :title, :caption, :user_id, :tool_id, :category_id, :status, :images,
     :id, :created_at, :datetime, :updated_at, :datetime,
     :tag_name
   )
@@ -15,7 +15,7 @@ class WorkForm
   validates :caption, length:{ maximum: 2000 }
 
   def save(tags)
-    work = Work.create(title: title, caption: caption, user_id: user_id, category_id: category_id, tool_id: tool_id, images: images)
+    work = Work.create(title: title, caption: caption, user_id: user_id, category_id: category_id, tool_id: tool_id, status: status, images: images)
     work_tags = []
     tags.each do |tag|
       work_tags << tag[:id]
